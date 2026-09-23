@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Login Admin – Desa Semparuk</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <img src="4447-removebg-preview.png" alt="Logo" />
+      <h1>Login Admin Desa Semparuk</h1>
+      <div class="msg" id="loginMsg"></div>
+      <form id="loginForm">
+        <input type="password" id="password" placeholder="Password admin" required autofocus />
+        <button type="submit" id="loginBtn">Masuk</button>
+      </form>
+      <a href="index.html" class="back-link">&larr; Kembali ke website</a>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('loginMsg');
+    const btn = document.getElementById('loginBtn');
+
+    // Jika sudah login, langsung ke dashboard
+    if (sessionStorage.getItem('adminToken')) {
+      window.location.href = 'admin-dashboard.html';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      msg.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Memeriksa...';
+
+      try {
+        const res = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'login', password })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          sessionStorage.setItem('adminToken', data.token);
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          msg.textContent = data.error || 'Login gagal.';
+        }
+      } catch (err) {
+        msg.textContent = 'Tidak bisa terhubung ke server. Cek koneksi & pengaturan URL Apps Script.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Masuk';
+      }
+    });
+  </script>
+</body>
+</html>

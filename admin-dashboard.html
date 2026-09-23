@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard Admin – Desa Semparuk</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="brand">🌿 Admin Desa Semparuk</div>
+      <nav>
+        <a href="#" id="nav-beranda" data-section="beranda" class="active">Beranda</a>
+        <a href="#" id="nav-profil" data-section="profil">Profil</a>
+        <a href="#" id="nav-potensi" data-section="potensi">Potensi</a>
+        <a href="#" id="nav-layanan" data-section="layanan">Layanan</a>
+        <a href="#" id="nav-kontak" data-section="kontak">Kontak</a>
+        <a href="#" id="nav-ulasan" data-section="ulasan">Ulasan Pengunjung</a>
+        <a href="#" id="nav-pengaturan" data-section="pengaturan">Pengaturan</a>
+      </nav>
+      <a href="index.html" target="_blank" class="logout" style="margin-top:1rem;">↗ Lihat Website</a>
+      <a class="logout" id="logoutBtn">⏻ Keluar</a>
+    </aside>
+
+    <main class="admin-main">
+
+      <!-- BERANDA -->
+      <div class="admin-panel active" id="panel-beranda">
+        <h1>Beranda</h1>
+        <p class="subtitle">Kelola konten yang tampil di halaman utama website.</p>
+        <div id="form-beranda"></div>
+        <button class="btn-save" id="save-beranda" data-section="beranda">Simpan Perubahan</button>
+        <span class="save-status" id="status-beranda"></span>
+      </div>
+
+      <!-- PROFIL -->
+      <div class="admin-panel" id="panel-profil">
+        <h1>Profil Desa</h1>
+        <p class="subtitle">Kelola sejarah, visi misi, data geografis, pemerintahan, dan lainnya.</p>
+        <div id="form-profil"></div>
+        <button class="btn-save" id="save-profil" data-section="profil">Simpan Perubahan</button>
+        <span class="save-status" id="status-profil"></span>
+      </div>
+
+      <!-- POTENSI -->
+      <div class="admin-panel" id="panel-potensi">
+        <h1>Potensi Desa</h1>
+        <p class="subtitle">Kelola daftar potensi yang ditampilkan di halaman Potensi.</p>
+        <div id="form-potensi"></div>
+        <button class="btn-save" id="save-potensi" data-section="potensi">Simpan Perubahan</button>
+        <span class="save-status" id="status-potensi"></span>
+      </div>
+
+      <!-- LAYANAN -->
+      <div class="admin-panel" id="panel-layanan">
+        <h1>Layanan Publik</h1>
+        <p class="subtitle">Kelola kategori layanan dan jam pelayanan kantor desa.</p>
+        <div id="form-layanan"></div>
+        <button class="btn-save" id="save-layanan" data-section="layanan">Simpan Perubahan</button>
+        <span class="save-status" id="status-layanan"></span>
+      </div>
+
+      <!-- KONTAK -->
+      <div class="admin-panel" id="panel-kontak">
+        <h1>Kontak</h1>
+        <p class="subtitle">Kelola informasi kontak yang tampil di halaman Kontak.</p>
+        <div id="form-kontak"></div>
+        <button class="btn-save" id="save-kontak" data-section="kontak">Simpan Perubahan</button>
+        <span class="save-status" id="status-kontak"></span>
+      </div>
+
+      <!-- ULASAN -->
+      <div class="admin-panel" id="panel-ulasan">
+        <h1>Ulasan Pengunjung</h1>
+        <p class="subtitle">Lihat dan hapus ulasan yang dikirim pengunjung lewat halaman Kontak.</p>
+        <div id="reviewsList"></div>
+      </div>
+
+      <!-- PENGATURAN -->
+      <div class="admin-panel" id="panel-pengaturan">
+        <h1>Pengaturan</h1>
+        <p class="subtitle">Ganti password admin.</p>
+        <div class="field-group">
+          <label class="field-label">Password Lama</label>
+          <input type="password" id="oldPassword" />
+          <br/><br/>
+          <label class="field-label">Password Baru (minimal 6 karakter)</label>
+          <input type="password" id="newPassword" />
+        </div>
+        <button class="btn-save" id="changePasswordBtn">Ganti Password</button>
+        <span class="save-status" id="passwordStatus"></span>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
